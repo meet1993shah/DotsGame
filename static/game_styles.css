@@ -115,23 +115,41 @@ h2 {
     z-index: 3;
 }
 
+/* Add styles for the buttons container */
+#buttons-container {
+    position: absolute;
+    bottom: 10vh; /* Place the buttons slightly above the bottom */
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0 5vw;
+}
+
 /* Button Styles */
 button {
     background-color: #FF6F61; /* Vibrant button color */
     color: white;
     border: none;
-    padding: 1rem 2rem;
+    padding: 1rem 5rem;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s ease;
     margin-top: 2rem;
-    position: absolute; /* Positioned relative to the grid */
-    bottom: 1vh; /* Keeps the button below the grid */
 }
 
 button:hover {
     background-color: #F35A4A; /* Slightly darker shade on hover */
+}
+
+/* Undo button specific style */
+#undo-button {
+    background-color: #4CAF50; /* Green color for undo */
+}
+
+/* Restart button specific style */
+#restart-button {
+    background-color: #FF9800; /* Orange color for restart */
 }
 
 /* Responsive Design */

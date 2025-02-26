@@ -20,6 +20,11 @@
         <div id="grid-container">
             <div id="gameBoard" data-width="{{ grid_width }}" data-height="{{ grid_height }}"></div>
         </div>
+        <!-- Undo and Restart buttons -->
+        <div id="buttons-container">
+            <button id="undo-button">Undo</button>
+            <button id="restart-button">Restart Game</button>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='game.js') }}"></script>
