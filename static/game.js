@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const players = data.players;
             const gridWidth = parseInt(document.getElementById('gameBoard').getAttribute('data-width'));
             const gridHeight = parseInt(document.getElementById('gameBoard').getAttribute('data-height'));
+            const dotSpacing = 60 + (7 - Math.min(gridWidth, gridHeight)) * 10;
 
             let currentPlayer = 0;
             let scores = new Array(players.length).fill(0);
@@ -31,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function drawGrid() {
                 gameBoard.innerHTML = "";
-                const dotSpacing = 50;
 
                 // Draw lines
                 for (let r = 0; r <= gridHeight; r++) {
@@ -141,8 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 let boxesToRemove = document.querySelectorAll(`#gameBoard div`);
                 boxesToRemove.forEach(box => {
                     if (
-                        parseInt(box.style.top) === r * 50 + 8 &&
-                        parseInt(box.style.left) === c * 50 + 8
+                        parseInt(box.style.top) === r * dotSpacing + 5 &&
+                        parseInt(box.style.left) === c * dotSpacing + 5
                     ) {
                         box.remove();
                     }
@@ -187,10 +187,10 @@ document.addEventListener("DOMContentLoaded", function () {
             function colorBox(r, c) {
                 let box = document.createElement("div");
                 box.style.position = "absolute";
-                box.style.top = `${r * 50 + 8}px`;  // Adjusting position to center in box
-                box.style.left = `${c * 50 + 8}px`; // Adjusting position to center in box
-                box.style.width = "40px";
-                box.style.height = "40px";
+                box.style.top = `${r * dotSpacing + 5}px`;  // Adjusting position to center in box
+                box.style.left = `${c * dotSpacing + 5}px`; // Adjusting position to center in box
+                box.style.width = `${dotSpacing}px`;
+                box.style.height = `${dotSpacing}px`;
                 box.style.backgroundColor = players[currentPlayer].color;
                 box.style.zIndex = 1; // Make sure the box appears above the lines
                 gameBoard.appendChild(box);

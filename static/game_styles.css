@@ -39,6 +39,10 @@ h2 {
 
 #scores {
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 /* Game Container */
@@ -131,7 +135,7 @@ button {
     background-color: #FF6F61; /* Vibrant button color */
     color: white;
     border: none;
-    padding: 1rem 5rem;
+    padding: 1rem 1rem;
     font-size: 1.2rem;
     cursor: pointer;
     border-radius: 5px;

@@ -9,7 +9,6 @@
     <script src="{{ url_for('static', filename='index.js') }}" defer></script>
 </head>
 <body>
-
     <div id="indexContainer">
         <h1>Dots and Boxes</h1>
         <form action="/game" method="POST">
@@ -18,11 +17,11 @@
             
             <div id="player_inputs"></div>
 
-            <label>Grid Width (3-7):</label>
-            <input type="number" name="grid_width" min="3" max="7" required>
+            <label>Grid Width (2-9):</label>
+            <input type="number" name="grid_width" min="2" max="9" required>
 
-            <label>Grid Height (3-7):</label>
-            <input type="number" name="grid_height" min="3" max="7" required>
+            <label>Grid Height (2-9):</label>
+            <input type="number" name="grid_height" min="2" max="9" required>
 
             <button type="submit">Start Game</button>
         </form>
