@@ -68,7 +68,7 @@ h2 {
 /* Game Board */
 #gameBoard {
     position: absolute;
-    width: 25%;
+    width: 90%;
     height: 100%;
     background-color: #1D1D1D; /* Dark background for the game board */
     border: none; /* Remove boundary line from grid container */
@@ -120,9 +120,10 @@ h2 {
     position: absolute;
     bottom: 10vh; /* Place the buttons slightly above the bottom */
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    padding: 0 5vw;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    padding: 0 2vw;
 }
 
 /* Button Styles */
