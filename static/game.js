@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 for (let r = 0; r <= gridHeight; r++) {
                     for (let c = 0; c <= gridWidth; c++) {
                         // Draw horizontal lines (between adjacent dots in the same row)
-                        if (c < gridWidth) { // Only draw horizontal lines between adjacent dots
+                        if (c < gridWidth) {
                             let hLine = document.createElement("div");
                             hLine.classList.add("line", "horizontal");
                             hLine.setAttribute("data-pos", `${r}-${c}-h`);
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
 
                         // Draw vertical lines (between adjacent dots in the same column)
-                        if (r < gridHeight) { // Only draw vertical lines between adjacent dots
+                        if (r < gridHeight) {
                             let vLine = document.createElement("div");
                             vLine.classList.add("line", "vertical");
                             vLine.setAttribute("data-pos", `${r}-${c}-v`);
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const restartButton = document.createElement("button");
                 restartButton.textContent = "Restart Game";
                 restartButton.addEventListener("click", restartGame);
-                document.body.appendChild(restartButton);
+                document.getElementById('game-container').appendChild(restartButton);
             }
 
             function restartGame() {
