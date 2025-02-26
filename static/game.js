@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 let madeBox = checkForBoxes(pos);
                 if (!madeBox) switchPlayer();
                 updateScoreBoard();
+                checkGameEnd();
             }
 
             function checkForBoxes(pos) {
@@ -91,26 +92,42 @@ document.addEventListener("DOMContentLoaded", function () {
                         boxes[r - 1][c] = currentPlayer;
                         scores[currentPlayer]++;
                         completedBox = true;
+                        colorBox(r - 1, c);
                     }
                     if (r < gridHeight && isBoxCompleted(r, c)) {
                         boxes[r][c] = currentPlayer;
                         scores[currentPlayer]++;
                         completedBox = true;
+                        colorBox(r, c);
                     }
                 } else {
                     if (c > 0 && isBoxCompleted(r, c - 1)) {
                         boxes[r][c - 1] = currentPlayer;
                         scores[currentPlayer]++;
                         completedBox = true;
+                        colorBox(r, c - 1);
                     }
                     if (c < gridWidth && isBoxCompleted(r, c)) {
                         boxes[r][c] = currentPlayer;
                         scores[currentPlayer]++;
                         completedBox = true;
+                        colorBox(r, c);
                     }
                 }
 
                 return completedBox;
+            }
+
+            function colorBox(r, c) {
+                let box = document.createElement("div");
+                box.style.position = "absolute";
+                box.style.top = `${r * 50 + 8}px`;  // Adjusting position to center in box
+                box.style.left = `${c * 50 + 8}px`; // Adjusting position to center in box
+                box.style.width = "40px";
+                box.style.height = "40px";
+                box.style.backgroundColor = players[currentPlayer].color;
+                box.style.zIndex = 1; // Make sure the box appears above the lines
+                gameBoard.appendChild(box);
             }
 
             function isBoxCompleted(r, c) {
@@ -120,6 +137,41 @@ document.addEventListener("DOMContentLoaded", function () {
                     lines.has(`${r}-${c}-v`) &&
                     lines.has(`${r}-${c + 1}-v`)
                 );
+            }
+
+            function checkGameEnd() {
+                // Check if all boxes are completed
+                let allBoxesCompleted = true;
+                for (let r = 0; r < gridHeight; r++) {
+                    for (let c = 0; c < gridWidth; c++) {
+                        if (boxes[r][c] === null) {
+                            allBoxesCompleted = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (allBoxesCompleted) {
+                    displayWinner();
+                }
+            }
+
+            function displayWinner() {
+                let winnerIndex = scores.indexOf(Math.max(...scores));
+                let winner = players[winnerIndex];
+                alert(`${winner.name} wins with a score of ${scores[winnerIndex]}!`);
+                displayRestartButton();
+            }
+
+            function displayRestartButton() {
+                const restartButton = document.createElement("button");
+                restartButton.textContent = "Restart Game";
+                restartButton.addEventListener("click", restartGame);
+                document.body.appendChild(restartButton);
+            }
+
+            function restartGame() {
+                window.location.href = '/'; // Redirect to the starting page
             }
 
             drawGrid();

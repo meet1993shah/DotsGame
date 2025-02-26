@@ -38,5 +38,10 @@ def get_players():
     game = session["game"]
     return jsonify({"players": game["players"]})
 
+@app.route('/restart', methods=['GET'])
+def restart_game():
+    session.clear()  # Clear the session to restart the game
+    return redirect('/')
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
