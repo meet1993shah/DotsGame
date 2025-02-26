@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify, session
+import os
+import platform
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"  # Change this to a secure key
+app.secret_key = os.urandom(24)
 
 @app.route('/')
 def index():
@@ -43,5 +45,8 @@ def restart_game():
     session.clear()  # Clear the session to restart the game
     return redirect('/')
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+if __name__ == "__main__":
+    if platform.system() == 'Android':
+        from android.permissions import Permission, request_permissions
+        request_permissions([Permission.INTERNET, Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE])
+    app.run(debug=False, port=8080)
