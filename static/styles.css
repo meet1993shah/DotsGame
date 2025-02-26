@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#game-info {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#turn {
+    font-size: 20px;
+}
+
+#scores {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+#grid-container {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameBoard {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.line {
+    position: absolute;
+    background-color: #888;
+    cursor: pointer;
+}
+
+.horizontal {
+    height: 8px;
+    width: 50px;
+}
+
+.vertical {
+    width: 8px;
+    height: 50px;
+}
+
+button {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}

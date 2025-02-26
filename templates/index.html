@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dots and Boxes - Setup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
+</head>
+<body>
+
+    <div id="indexContainer">
+        <h1>Dots and Boxes</h1>
+        <form action="/game" method="POST">
+            <label>Number of Players (2-6):</label>
+            <input type="number" id="num_players" name="num_players" min="2" max="6" required onchange="updatePlayerInputs()">
+            
+            <div id="player_inputs"></div>
+
+            <label>Grid Width (3-7):</label>
+            <input type="number" name="grid_width" min="3" max="7" required>
+
+            <label>Grid Height (3-7):</label>
+            <input type="number" name="grid_height" min="3" max="7" required>
+
+            <button type="submit">Start Game</button>
+        </form>
+    </div>
+
+</body>
+</html>
