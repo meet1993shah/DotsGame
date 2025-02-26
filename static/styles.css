@@ -1,94 +1,163 @@
+/* General Reset and Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #333;
-    color: #fff;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Dark background */
+    color: #EAEAEA; /* Light text for contrast */
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    overflow: hidden;
+    flex-direction: column;
 }
 
-#game-container {
+h1, h2 {
+    color: #FF6F61; /* Vibrant color for headings */
+    text-align: center;
+}
+
+button {
+    background-color: #FF6F61; /* Vibrant button color */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-top: 2rem;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #F35A4A; /* Slightly darker on hover */
+}
+
+/* Centering the container for both pages */
+#indexContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
-}
-
-#game-info {
-    margin-bottom: 20px;
+    height: 100%;
+    padding: 1rem;
     text-align: center;
 }
 
-#turn {
-    font-size: 20px;
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
 }
 
-#scores {
-    font-size: 18px;
-    margin-top: 10px;
+label {
+    margin: 0.5rem 0;
+}
+
+input[type="number"], input[type="text"] {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 2px solid #FF6F61;
+    border-radius: 5px;
+    background-color: #222222;
+    color: #EAEAEA;
+    width: 70%;
+}
+
+input[type="number"]:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: #FF4500;
+}
+
+/* Styling the game area */
+#game-container {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #grid-container {
     position: relative;
-    margin-top: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 #gameBoard {
     position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.dot {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #fff;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 50px);
+    grid-template-rows: repeat(auto-fill, 50px);
+    gap: 10px;
 }
 
 .line {
     position: absolute;
-    background-color: #888;
-    cursor: pointer;
+    background-color: #FF6F61;
+    transition: background-color 0.3s ease;
 }
 
 .horizontal {
-    height: 8px;
-    width: 50px;
+    height: 2px;
 }
 
 .vertical {
+    width: 2px;
+}
+
+.dot {
     width: 8px;
-    height: 50px;
-}
-
-.completed-box {
+    height: 8px;
+    background-color: #EAEAEA;
+    border-radius: 50%;
     position: absolute;
-    z-index: 1;
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-button {
-    background-color: #444;
-    color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px 20px;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 16px;
+/* Styling for player score area */
+#game-info {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
 }
 
-button:hover {
-    background-color: #555;
+#turn {
+    font-size: 1.5rem;
+}
+
+#scores {
+    margin-top: 1rem;
+}
+
+/* Styling for the Restart Button */
+button.restart {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* Ensuring the game is responsive */
+@media (max-width: 768px) {
+    #game-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #gameBoard {
+        grid-template-columns: repeat(4, 50px);
+        grid-template-rows: repeat(4, 50px);
+    }
 }

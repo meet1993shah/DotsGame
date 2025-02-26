@@ -156,10 +156,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
+            function triggerConfetti() {
+                let duration = 3 * 1000;
+                let end = Date.now() + duration;
+                function frame() {
+                    confetti({
+                        particleCount: 5,
+                        spread: 100,
+                        startVelocity: 40,
+                        origin: { x: Math.random(), y: Math.random() }
+                    });
+
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                }
+
+                frame();
+            }
+
             function displayWinner() {
                 let winnerIndex = scores.indexOf(Math.max(...scores));
                 let winner = players[winnerIndex];
-                alert(`${winner.name} wins with a score of ${scores[winnerIndex]}!`);
+                currentPlayerDisplay.textContent = `${winner.name} wins! 🎉🎉🎉`;
+                triggerConfetti();
                 displayRestartButton();
             }
 
